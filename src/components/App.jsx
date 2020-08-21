@@ -14,24 +14,9 @@ function App() {
     //this function take a callback function
     //this callback function store previous object that object is used for update new value
     updateContact((prevValue) =>{
-      if (name === "fName") {
-        return {
-          fName:value,
-          lName:prevValue.lName,
-          email:prevValue.email
-        }
-      }else if (name === "lName") {
-        return {
-          fName:prevValue.fName,
-          lName:value,
-          email:prevValue.email
-        }
-      }else if (name === "email") {
-        return {
-          fName:prevValue.fName,
-          lName:prevValue.lName,
-          email:value
-        }
+      return {
+        ...prevValue,//sprade previous object
+        [name]:value //interpreate value of name 
       }
     });
 
@@ -56,6 +41,7 @@ function App() {
          />
          <input 
         name="email" 
+        type="email"
         placeholder="Email"
         onChange ={inputHandler}
         value ={contact.email}
@@ -67,3 +53,4 @@ function App() {
 }
 
 export default App;
+
